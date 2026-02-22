@@ -1,3 +1,5 @@
+import os
+
 from src import create_app
 from src.database.extensions import db
 
@@ -11,3 +13,6 @@ if __name__ == '__main__':
         print("Database tables created successfully!")
 
     app.run(debug=True)
+    if os.getenv("FLASK_ENV") == "PROD":
+        port = int(os.environ.get("PORT", 5000))
+        app.run(host='0.0.0.0', port=port)
