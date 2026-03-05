@@ -20,6 +20,10 @@ class UserService:
         new_user = self.repository.save(user)
         return new_user
 
+    def exists(self, username: str)-> bool:
+        user = self.repository.get(username)
+        return True if user else False
+
     def sign_in(self, username, password):
         user = self.repository.get(username)
         is_hash = user.check_password(password)

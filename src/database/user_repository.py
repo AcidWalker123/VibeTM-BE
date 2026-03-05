@@ -9,6 +9,9 @@ class UserRepository:
         user = self.db.query(User).filter_by(username=username).first()
         return user
 
+    def get_by_email(self, email):
+        user = self.db.query(User).filter_by(email=email).first()
+
     def save(self, user: User):
         self.db.add(user)
         self.db.commit()
