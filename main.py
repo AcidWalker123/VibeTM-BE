@@ -1,7 +1,6 @@
 import os
 from src import create_app
 from src.database.extensions import db
-from src.core.user import User
 
 app = create_app()
 

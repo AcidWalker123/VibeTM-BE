@@ -2,6 +2,7 @@ import os
 
 from flask import Flask
 from flask.cli import load_dotenv
+from flask_cors import CORS
 
 from src.database.extensions import db
 from src.web.controllers.user_controller import user_bp
@@ -14,7 +15,7 @@ def create_app():
     app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 
     app.register_blueprint(user_bp, url_prefix='/auth')
-
+    CORS(app)
     db.init_app(app)
 
     return app
